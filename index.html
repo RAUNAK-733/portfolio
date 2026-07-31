@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raunak Singh | Full-Stack Developer & AI Enthusiast</title>
+    <meta name="description" content="Portfolio of Raunak Singh — Computer Engineering student from Nepal. Full-Stack Developer, AI & Reinforcement Learning researcher, and Backend Security enthusiast.">
+    <meta name="keywords" content="Raunak Singh, portfolio, full-stack developer, AI, reinforcement learning, backend security, Nepal">
+    <meta name="author" content="Raunak Singh">
+    <meta property="og:title" content="Raunak Singh | Full-Stack Developer & AI Enthusiast">
+    <meta property="og:description" content="Computer Engineering student from Nepal focused on AI research, backend security, and full-stack product development.">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ===== DOT PATTERN CANVAS ===== -->
+    <canvas id="dotCanvas" class="dot-canvas"></canvas>
+
+    <!-- ===== TOAST CONTAINER ===== -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">
+                <div class="logo-dots">
+                    <span></span><span></span><span></span>
+                    <span></span><span class="dot-accent"></span><span></span>
+                    <span></span><span></span><span></span>
+                </div>
+                <span class="logo-name">RS</span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#contact" class="nav-link nav-link--cta">Contact</a>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <div class="hero-left">
+                <!-- Nothing OS Live Nepal Clock Widget -->
+                <div class="hero-widget" data-animate>
+                    <div class="widget-header">
+                        <span class="widget-dot"></span>
+                        <span class="widget-location">Kathmandu, Nepal</span>
+                    </div>
+                    <div class="widget-clock">
+                        <span id="nepalTime">00:00:00</span>
+                        <span class="widget-tz">NPT (UTC+5:45)</span>
+                    </div>
+                </div>
+
+                <div class="hero-badge" data-animate data-delay="100">
+                    <span class="badge-dot"></span>
+                    Available for internships & developer roles
+                </div>
+                
+                <h1 class="hero-title" data-animate data-delay="150">
+                    Raunak<br>Singh<span class="title-dot">.</span>
+                </h1>
+                
+                <p class="hero-subtitle" data-animate data-delay="200">
+                    I build intelligent systems, secure backend applications, and practical web tools.
+                </p>
+                
+                <p class="hero-tagline" data-animate data-delay="250">
+                    Computer Engineering Student · Tribhuvan University, Nepal
+                </p>
+                
+                <div class="hero-cta" data-animate data-delay="300">
+                    <a href="#projects" class="btn btn--primary">
+                        View Projects
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </a>
+                    <a href="https://github.com/RAUNAK-733" target="_blank" rel="noopener noreferrer" class="btn btn--outline">
+                        GitHub Profile
+                    </a>
+                    <a href="#contact" class="btn btn--ghost">Contact Me</a>
+                </div>
+            </div>
+
+            <!-- Hero Right with Interactive Glyph Frame & Custom Avatar -->
+            <div class="hero-right" data-animate data-delay="200">
+                <div class="hero-photo-wrapper" id="photoWrapper">
+                    <div class="glyph-corners">
+                        <span class="glyph-corner top-left"></span>
+                        <span class="glyph-corner top-right"></span>
+                        <span class="glyph-corner bottom-left"></span>
+                        <span class="glyph-corner bottom-right"></span>
+                    </div>
+                    
+                    <div class="photo-frame">
+                        <img src="profile.png" alt="Raunak Singh" class="hero-photo" id="heroPhoto">
+                        <div class="photo-overlay-glow"></div>
+                    </div>
+
+                    <!-- Floating Status Badge -->
+                    <div class="photo-status-badge">
+                        <div class="status-indicator"></div>
+                        <span>Engineering & AI</span>
+                    </div>
+
+                    <div class="photo-dots">
+                        <div class="dot-grid">
+                            <span></span><span></span><span></span><span></span><span></span>
+                            <span></span><span></span><span></span><span></span><span></span>
+                            <span></span><span></span><span></span><span></span><span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-header" data-animate>
+                <div class="section-dot-line"><span></span><span></span><span></span></div>
+                <h2 class="section-title">About</h2>
+            </div>
+            <div class="about-grid">
+                <div class="about-text" data-animate data-delay="100">
+                    <p class="about-lead">I am a Computer Engineering student who learns best by building real-world software.</p>
+                    <p>My work focuses on intelligent agent communication (RL), backend security & RBAC platforms, AI context preservation tools, healthcare claim validation models, and privacy-first web utilities. I care about making software that is understandable, reliable, and technically honest.</p>
+                    <p>Currently strengthening full-stack development skills while diving deep into machine learning research and application security. My goal is to build products that combine research-minded engineering with clean, practical UX.</p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-card" data-animate data-delay="150">
+                        <span class="stat-number">5+</span>
+                        <span class="stat-label">Full Projects</span>
+                    </div>
+                    <div class="stat-card" data-animate data-delay="200">
+                        <span class="stat-number">3</span>
+                        <span class="stat-label">Core Domains</span>
+                    </div>
+                    <div class="stat-card" data-animate data-delay="250">
+                        <span class="stat-number">PyTorch</span>
+                        <span class="stat-label">AI / RL Engine</span>
+                    </div>
+                    <div class="stat-card" data-animate data-delay="300">
+                        <span class="stat-number">🇳🇵</span>
+                        <span class="stat-label">Based in Nepal</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SKILLS ===== -->
+    <section id="skills" class="section section--dark">
+        <div class="container">
+            <div class="section-header" data-animate>
+                <div class="section-dot-line"><span></span><span></span><span></span></div>
+                <h2 class="section-title">Skills & Tech Stack</h2>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-card" data-animate data-delay="100">
+                    <div class="skill-header">
+                        <div class="skill-dot-icon"><span></span><span></span><span></span><span></span></div>
+                        <h3>Frontend</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span>React</span><span>Next.js</span><span>JavaScript</span><span>TypeScript</span>
+                        <span>HTML5</span><span>CSS3</span><span>Bootstrap</span><span>Tailwind CSS</span>
+                    </div>
+                </div>
+                <div class="skill-card" data-animate data-delay="150">
+                    <div class="skill-header">
+                        <div class="skill-dot-icon"><span></span><span></span><span></span><span></span></div>
+                        <h3>Backend</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span>Node.js</span><span>Express.js</span><span>FastAPI</span><span>Flask</span>
+                        <span>REST APIs</span><span>JWT</span><span>RBAC</span><span>Rate Limiting</span>
+                    </div>
+                </div>
+                <div class="skill-card" data-animate data-delay="200">
+                    <div class="skill-header">
+                        <div class="skill-dot-icon"><span></span><span></span><span></span><span></span></div>
+                        <h3>AI / Machine Learning</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span>Python</span><span>PyTorch</span><span>Reinforcement Learning</span>
+                        <span>Policy Gradients</span><span>Scikit-learn</span><span>Pandas</span><span>Experiment Analysis</span>
+                    </div>
+                </div>
+                <div class="skill-card" data-animate data-delay="250">
+                    <div class="skill-header">
+                        <div class="skill-dot-icon"><span></span><span></span><span></span><span></span></div>
+                        <h3>Backend Security</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span>Auth Systems</span><span>RBAC</span><span>JWT</span><span>bcrypt</span>
+                        <span>Helmet</span><span>CORS</span><span>Audit Logs</span><span>Input Validation</span>
+                    </div>
+                </div>
+                <div class="skill-card" data-animate data-delay="300">
+                    <div class="skill-header">
+                        <div class="skill-dot-icon"><span></span><span></span><span></span><span></span></div>
+                        <h3>Database & Architecture</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span>MySQL</span><span>SQLite</span><span>JSON Storage</span><span>Schema Design</span>
+                    </div>
+                </div>
+                <div class="skill-card" data-animate data-delay="350">
+                    <div class="skill-header">
+                        <div class="skill-dot-icon"><span></span><span></span><span></span><span></span></div>
+                        <h3>Tools & Workflow</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span>Git</span><span>GitHub</span><span>Docker</span><span>VS Code</span>
+                        <span>Postman</span><span>Firebase</span><span>Linux</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section id="projects" class="section">
+        <div class="container">
+            <div class="section-header" data-animate>
+                <div class="section-dot-line"><span></span><span></span><span></span></div>
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-sub">Filter by domain or click any project to view details</p>
+            </div>
+
+            <!-- Project Category Filter Tabs -->
+            <div class="filter-tabs" data-animate data-delay="50">
+                <button class="filter-btn active" data-filter="all">All Projects <span class="filter-count">5</span></button>
+                <button class="filter-btn" data-filter="ai">AI & RL <span class="filter-count">2</span></button>
+                <button class="filter-btn" data-filter="security">Security <span class="filter-count">1</span></button>
+                <button class="filter-btn" data-filter="fullstack">Full-Stack <span class="filter-count">1</span></button>
+                <button class="filter-btn" data-filter="utility">Utilities <span class="filter-count">1</span></button>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="projects-list" id="projectsContainer">
+                
+                <!-- Project 1: Emergent Trading Language -->
+                <div class="project-card project-card--featured" data-category="ai" data-animate data-delay="100" id="project-1">
+                    <div class="project-meta">
+                        <span class="project-tag project-tag--ai">AI / RL Research</span>
+                        <span class="project-num">01</span>
+                    </div>
+                    <h3>Emergent Trading Language</h3>
+                    <p class="project-desc">A research-focused AI project studying whether reinforcement-learning agents can develop useful communication protocols in a multi-agent trading environment. Compares normal, zeroed, and randomized messages to evaluate true cooperative intent.</p>
+                    
+                    <div class="project-highlight-box">
+                        <span>⚡ Key Insight:</span> Experiment-driven research system with seeded runs, PyTorch actor/speaker networks, JSON metrics, checkpointing, and statistical evidence analysis.
+                    </div>
+                    
+                    <div class="project-stack">
+                        <span>Python</span><span>PyTorch</span><span>Reinforcement Learning</span><span>Policy Gradients</span><span>Experiment Analysis</span>
+                    </div>
+                    
+                    <div class="project-actions">
+                        <a href="https://github.com/RAUNAK-733/emergent-trading-language" target="_blank" rel="noopener noreferrer" class="project-link">
+                            View Repository
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                        </a>
+                        <button class="inspect-btn" onclick="openProjectModal('p1')">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+                            Inspect Specs
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Projects Grid Split -->
+                <div class="projects-subgrid">
+                    
+                    <!-- Project 2: AccessGuard Pro -->
+                    <div class="project-card" data-category="security" data-animate data-delay="150" id="project-2">
+                        <div class="project-meta">
+                            <span class="project-tag project-tag--security">Backend Security</span>
+                            <span class="project-num">02</span>
+                        </div>
+                        <h3>AccessGuard Pro</h3>
+                        <p>Full-stack security & GRC/RBAC management platform for managing users, authentication, roles, risk registers, compliance controls, audit logs, and rate-limited backend routes.</p>
+                        <div class="project-stack">
+                            <span>Node.js</span><span>Express.js</span><span>MySQL</span><span>JWT</span><span>bcrypt</span><span>RBAC</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/RAUNAK-733/accessguard-roko" target="_blank" rel="noopener noreferrer" class="project-link">
+                                GitHub <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                            </a>
+                            <button class="inspect-btn" onclick="openProjectModal('p2')">Inspect Specs</button>
+                        </div>
+                    </div>
+
+                    <!-- Project 3: ContextBridge -->
+                    <div class="project-card" data-category="fullstack" data-animate data-delay="200" id="project-3">
+                        <div class="project-meta">
+                            <span class="project-tag project-tag--fullstack">Full-Stack AI Tool</span>
+                            <span class="project-num">03</span>
+                        </div>
+                        <h3>ContextBridge</h3>
+                        <p>Full-stack AI productivity tool designed to transfer conversation context seamlessly between AI models. Reconstructs structured context capsules for continuous workflow.</p>
+                        <div class="project-stack">
+                            <span>Next.js</span><span>React</span><span>TypeScript</span><span>FastAPI</span><span>Docker</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/RAUNAK-733/ContextBridge" target="_blank" rel="noopener noreferrer" class="project-link">
+                                GitHub <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                            </a>
+                            <button class="inspect-btn" onclick="openProjectModal('p3')">Inspect Specs</button>
+                        </div>
+                    </div>
+
+                    <!-- Project 4: ClaimGuard -->
+                    <div class="project-card" data-category="ai" data-animate data-delay="250" id="project-4">
+                        <div class="project-meta">
+                            <span class="project-tag project-tag--ai">ML Pipeline</span>
+                            <span class="project-num">04</span>
+                        </div>
+                        <h3>ClaimGuard</h3>
+                        <p>Healthcare claim validation prototype for openIMIS-style workflows. Combines rule-based logic with a machine-learning pipeline for emergency claim entry verification.</p>
+                        <div class="project-stack">
+                            <span>Python</span><span>Scikit-learn</span><span>Pandas</span><span>Rule Engine</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/RAUNAK-733/Claimguard" target="_blank" rel="noopener noreferrer" class="project-link">
+                                GitHub <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                            </a>
+                            <button class="inspect-btn" onclick="openProjectModal('p4')">Inspect Specs</button>
+                        </div>
+                    </div>
+
+                    <!-- Project 5: Sajilo Tools -->
+                    <div class="project-card" data-category="utility" data-animate data-delay="300" id="project-5">
+                        <div class="project-meta">
+                            <span class="project-tag project-tag--utility">Web Utility</span>
+                            <span class="project-num">05</span>
+                        </div>
+                        <h3>Sajilo Tools</h3>
+                        <p>Nepali utility suite for students — Nepali age calculator, +2 GPA calculator, and digital clock. Fully client-side and zero-data-transmission for complete privacy.</p>
+                        <div class="project-stack">
+                            <span>HTML5</span><span>Tailwind CSS</span><span>JavaScript</span><span>Firebase</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/RAUNAK-733/SAJILO-TOOLS" target="_blank" rel="noopener noreferrer" class="project-link">
+                                GitHub <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                            </a>
+                            <button class="inspect-btn" onclick="openProjectModal('p5')">Inspect Specs</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SERVICES ===== -->
+    <section id="services" class="section section--dark">
+        <div class="container">
+            <div class="section-header" data-animate>
+                <div class="section-dot-line"><span></span><span></span><span></span></div>
+                <h2 class="section-title">What I Can Do</h2>
+                <p class="section-sub">Full-stack web engineering & intelligent automation services</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-item" data-animate data-delay="100">
+                    <div class="service-dot"></div>
+                    <div class="service-text">
+                        <h4>Responsive Frontends</h4>
+                        <p>Build clean, fast React & Next.js web applications with modern design</p>
+                    </div>
+                </div>
+                <div class="service-item" data-animate data-delay="130">
+                    <div class="service-dot"></div>
+                    <div class="service-text">
+                        <h4>REST API Backends</h4>
+                        <p>Develop Node.js / Express & Python FastAPI microservices and APIs</p>
+                    </div>
+                </div>
+                <div class="service-item" data-animate data-delay="160">
+                    <div class="service-dot"></div>
+                    <div class="service-text">
+                        <h4>Auth & Security Systems</h4>
+                        <p>Implement JWT, bcrypt, RBAC authorization, and backend security controls</p>
+                    </div>
+                </div>
+                <div class="service-item" data-animate data-delay="190">
+                    <div class="service-dot"></div>
+                    <div class="service-text">
+                        <h4>Full-Stack MVPs</h4>
+                        <p>Turn product concepts into fully functional web prototypes end-to-end</p>
+                    </div>
+                </div>
+                <div class="service-item" data-animate data-delay="220">
+                    <div class="service-dot"></div>
+                    <div class="service-text">
+                        <h4>ML & Automation Prototypes</h4>
+                        <p>Build Python automation scripts, scikit-learn models, and PyTorch RL setups</p>
+                    </div>
+                </div>
+                <div class="service-item" data-animate data-delay="250">
+                    <div class="service-dot"></div>
+                    <div class="service-text">
+                        <h4>Documentation & Quality Assurance</h4>
+                        <p>Write clear project documentation, API specs, and conduct rigorous testing</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== EXPERIENCE ===== -->
+    <section id="experience" class="section">
+        <div class="container">
+            <div class="section-header" data-animate>
+                <div class="section-dot-line"><span></span><span></span><span></span></div>
+                <h2 class="section-title">Education & Focus</h2>
+            </div>
+            <div class="experience-content">
+                <div class="edu-card" data-animate data-delay="100">
+                    <div class="edu-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                    </div>
+                    <div class="edu-right">
+                        <h3>Bachelor in Computer Engineering</h3>
+                        <p class="edu-school">Sagarmatha Engineering College, Tribhuvan University</p>
+                        <p class="edu-loc">📍 Nepal</p>
+                    </div>
+                </div>
+
+                <div class="focus-list">
+                    <h4 data-animate data-delay="150">Current Focus Areas</h4>
+                    <div class="focus-item" data-animate data-delay="180">
+                        <div class="focus-dot"></div>
+                        <p>Building full-stack web applications using React, Next.js, Node.js, FastAPI, and relational databases.</p>
+                    </div>
+                    <div class="focus-item" data-animate data-delay="210">
+                        <div class="focus-dot"></div>
+                        <p>Developing backend security architectures with authentication, JWT, RBAC, rate limiting, and audit logs.</p>
+                    </div>
+                    <div class="focus-item" data-animate data-delay="240">
+                        <div class="focus-dot"></div>
+                        <p>Exploring reinforcement learning, emergent communication protocols, and intelligent multi-agent systems.</p>
+                    </div>
+                    <div class="focus-item" data-animate data-delay="270">
+                        <div class="focus-dot"></div>
+                        <p>Improving core engineering foundations through automated testing, Git workflow, and comprehensive documentation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact" class="section section--dark section--contact">
+        <div class="container">
+            <div class="section-header" data-animate>
+                <div class="section-dot-line light"><span></span><span></span><span></span></div>
+                <h2 class="section-title">Let's Connect</h2>
+                <p class="section-sub">Open to internships, junior developer roles, AI/ML research, and full-stack projects.</p>
+            </div>
+
+            <div class="contact-grid" data-animate data-delay="150">
+                <a href="mailto:singhraunak733@gmail.com" class="contact-card" id="contact-email">
+                    <div class="contact-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    </div>
+                    <div class="contact-info">
+                        <span class="contact-label">Email (Click to Copy)</span>
+                        <span class="contact-value">singhraunak733@gmail.com</span>
+                    </div>
+                    <svg class="contact-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                </a>
+
+                <a href="https://github.com/RAUNAK-733" target="_blank" rel="noopener noreferrer" class="contact-card" id="contact-github">
+                    <div class="contact-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    </div>
+                    <div class="contact-info">
+                        <span class="contact-label">GitHub</span>
+                        <span class="contact-value">RAUNAK-733</span>
+                    </div>
+                    <svg class="contact-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                </a>
+
+                <a href="https://www.linkedin.com/in/raunak-singh-029101331" target="_blank" rel="noopener noreferrer" class="contact-card" id="contact-linkedin">
+                    <div class="contact-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </div>
+                    <div class="contact-info">
+                        <span class="contact-label">LinkedIn</span>
+                        <span class="contact-value">Raunak Singh</span>
+                    </div>
+                    <svg class="contact-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                </a>
+
+                <div class="contact-card contact-card--static" id="contact-location">
+                    <div class="contact-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <div class="contact-info">
+                        <span class="contact-label">Location</span>
+                        <span class="contact-value">Nepal</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-left">
+                    <div class="footer-logo">
+                        <div class="logo-dots small">
+                            <span></span><span></span><span></span>
+                            <span></span><span class="dot-accent"></span><span></span>
+                            <span></span><span></span><span></span>
+                        </div>
+                    </div>
+                    <p>Building intelligent systems & practical software tools.</p>
+                </div>
+                <div class="footer-right">
+                    <div class="footer-links">
+                        <a href="https://github.com/RAUNAK-733" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        <a href="https://www.linkedin.com/in/raunak-singh-029101331" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                        <a href="mailto:singhraunak733@gmail.com">Email</a>
+                    </div>
+                    <p class="footer-copy">© 2026 Raunak Singh</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== PROJECT INSPECTOR MODAL ===== -->
+    <div id="projectModal" class="modal-overlay">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeProjectModal()">✕</button>
+            <div class="modal-header">
+                <span class="modal-tag" id="modalTag">Category</span>
+                <h3 class="modal-title" id="modalTitle">Project Title</h3>
+            </div>
+            <div class="modal-body">
+                <p id="modalDesc">Detailed description goes here...</p>
+                <div class="modal-section">
+                    <h4>Architecture & Highlights</h4>
+                    <ul id="modalHighlights"></ul>
+                </div>
+                <div class="modal-section">
+                    <h4>Tech Stack</h4>
+                    <div class="modal-stack" id="modalStack"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a id="modalGithubLink" href="#" target="_blank" rel="noopener noreferrer" class="btn btn--primary">
+                    Open on GitHub
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
