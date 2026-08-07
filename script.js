@@ -1,10 +1,6 @@
 /* ============================================
-   RAUNAK SINGH PORTFOLIO — JavaScript (Enhanced)
-   - Live Nepal Clock Widget
-   - Project Category Filter System
-   - Spec Modal Inspector
-   - Toast Notifications
-   - Interactive Glyph Frame Parallax
+   RAUNAK SINGH PORTFOLIO — JavaScript (Masterpiece)
+   Linear · Vercel · Framer · Spline · Awwwards
    ============================================ */
 
 // ===== PROJECT SPECS DATA =====
@@ -84,13 +80,61 @@ document.addEventListener('DOMContentLoaded', () => {
     const animatedEls = document.querySelectorAll('[data-animate]');
     const sections = document.querySelectorAll('.section, .hero');
 
+    // ===== AWWWARDS / RIVE CUSTOM MAGNETIC CURSOR =====
+    const cursor = document.getElementById('customCursor');
+    const cursorDot = document.getElementById('customCursorDot');
+
+    if (cursor && cursorDot && window.matchMedia('(pointer: fine)').matches) {
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+        let cursorX = mouseX;
+        let cursorY = mouseY;
+
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            cursorDot.style.left = `${mouseX}px`;
+            cursorDot.style.top = `${mouseY}px`;
+        });
+
+        function animateCursor() {
+            cursorX += (mouseX - cursorX) * 0.18;
+            cursorY += (mouseY - cursorY) * 0.18;
+            cursor.style.left = `${cursorX}px`;
+            cursor.style.top = `${cursorY}px`;
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        // Expand cursor on clickable elements
+        const hoverables = document.querySelectorAll('a, button, .project-card, .ach-card, .skill-card, .stat-card');
+        hoverables.forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+        });
+    }
+
+    // ===== 3D MODEL VIEWER & FALLBACK HANDLERS =====
+    const statueViewer = document.getElementById('statueViewer');
+    if (statueViewer) {
+        statueViewer.addEventListener('load', () => {
+            const overlay = statueViewer.querySelector('.model-loading-overlay');
+            if (overlay) overlay.style.display = 'none';
+        });
+
+        statueViewer.addEventListener('error', (err) => {
+            console.warn('3D GLB model not found or WebGL unsupported, falling back to statue artwork poster.');
+            const overlay = statueViewer.querySelector('.model-loading-overlay');
+            if (overlay) overlay.style.display = 'none';
+        });
+    }
+
     // ===== LIVE NEPAL CLOCK (UTC +5:45) =====
     function updateNepalClock() {
         const timeEl = document.getElementById('nepalTime');
         if (!timeEl) return;
 
         const now = new Date();
-        // Convert to Nepal Standard Time (UTC + 5:45)
         const utcMs = now.getTime() + (now.getTimezoneOffset() * 60000);
         const nepalMs = utcMs + (5.75 * 3600000);
         const nepalDate = new Date(nepalMs);
@@ -104,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(updateNepalClock, 1000);
     updateNepalClock();
 
-    // ===== TOAST NOTIFICATION FUNCTION =====
+    // ===== TOAST NOTIFICATIONS =====
     window.showToast = function(msg) {
         const container = document.getElementById('toastContainer');
         if (!container) return;
@@ -211,22 +255,34 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     window.addEventListener('scroll', updateActiveNav, { passive: true });
 
-    // ===== SCROLL ANIMATIONS =====
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const el = entry.target;
-                const delay = parseInt(el.dataset.delay || 0, 10);
-                setTimeout(() => el.classList.add('animated'), delay);
-                observer.unobserve(el);
-            }
+    // ===== SCROLL ANIMATIONS WITH FAILSAFE =====
+    function animateAll() {
+        animatedEls.forEach(el => {
+            const delay = parseInt(el.dataset.delay || 0, 10);
+            setTimeout(() => el.classList.add('animated'), delay);
         });
-    }, {
-        rootMargin: '0px 0px -50px 0px',
-        threshold: 0.1
-    });
+    }
 
-    animatedEls.forEach(el => observer.observe(el));
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const delay = parseInt(el.dataset.delay || 0, 10);
+                    setTimeout(() => el.classList.add('animated'), delay);
+                    observer.unobserve(el);
+                }
+            });
+        }, {
+            rootMargin: '100px 0px 100px 0px',
+            threshold: 0.01
+        });
+
+        animatedEls.forEach(el => observer.observe(el));
+    }
+    
+    // Failsafe: force animate all elements after 200ms
+    setTimeout(animateAll, 200);
 
     // ===== SMOOTH SCROLL =====
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -242,7 +298,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ===== PROJECT CATEGORY FILTER TABS =====
-    const filterBtns = document.querySelectorAll('.filter-btn');
+    const filterBtns = document.querySelectorAll('.filter-btn:not(.ach-btn)');
     const projectCards = document.querySelectorAll('#projectsContainer .project-card');
 
     filterBtns.forEach(btn => {
@@ -265,13 +321,37 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // ===== ACHIEVEMENT CATEGORY FILTER TABS =====
+    const achFilterBtns = document.querySelectorAll('.ach-btn');
+    const achCards = document.querySelectorAll('#achievementsContainer .ach-card');
+
+    achFilterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const category = btn.dataset.achFilter;
+
+            achFilterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            achCards.forEach(card => {
+                const cardCat = card.dataset.achCategory;
+                if (category === 'all' || cardCat === category) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            showToast(`Filtering: ${btn.textContent.trim()}`);
+        });
+    });
+
     // ===== PHOTO FRAME INTERACTIVE PARALLAX =====
-    const photoWrapper = document.getElementById('photoWrapper');
+    const photoWrapper = document.getElementById('hero3dWrapper') || document.getElementById('photoWrapper');
     if (photoWrapper) {
         photoWrapper.addEventListener('mousemove', (e) => {
             const rect = photoWrapper.getBoundingClientRect();
-            const x = ((e.clientX - rect.left) / rect.width - 0.5) * 15;
-            const y = ((e.clientY - rect.top) / rect.height - 0.5) * -15;
+            const x = ((e.clientX - rect.left) / rect.width - 0.5) * 18;
+            const y = ((e.clientY - rect.top) / rect.height - 0.5) * -18;
 
             photoWrapper.style.transform = `perspective(1000px) rotateX(${y}deg) rotateY(${x}deg)`;
         });
@@ -292,11 +372,37 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ===== KEYBOARD ACCESSIBILITY =====
+    // ===== LINEAR COMMAND PALETTE (CTRL+K / CMD+K) =====
+    const cmdInput = document.getElementById('cmdInput');
+    if (cmdInput) {
+        cmdInput.addEventListener('input', (e) => {
+            const val = e.target.value.toLowerCase().trim();
+            const items = document.querySelectorAll('.cmd-item');
+
+            items.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                if (!val || text.includes(val)) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    }
+
+    // ===== KEYBOARD SHORTCUTS =====
     document.addEventListener('keydown', (e) => {
+        // Ctrl+K or Cmd+K
+        if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+            e.preventDefault();
+            toggleCmdPalette();
+        }
+
         if (e.key === 'Escape') {
             closeMenu();
             closeProjectModal();
+            closeLightbox();
+            closeCmdPalette();
         }
     });
 
@@ -309,7 +415,88 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// ===== MODAL FUNCTIONS =====
+// ===== COMMAND PALETTE FUNCTIONS =====
+window.openCmdPalette = function() {
+    const modal = document.getElementById('cmdPaletteModal');
+    const input = document.getElementById('cmdInput');
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        if (input) {
+            input.value = '';
+            setTimeout(() => input.focus(), 100);
+        }
+    }
+};
+
+window.closeCmdPalette = function() {
+    const modal = document.getElementById('cmdPaletteModal');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+};
+
+window.toggleCmdPalette = function() {
+    const modal = document.getElementById('cmdPaletteModal');
+    if (modal && modal.classList.contains('active')) {
+        closeCmdPalette();
+    } else {
+        openCmdPalette();
+    }
+};
+
+window.executeCmd = function(action) {
+    closeCmdPalette();
+
+    switch (action) {
+        case 'about':
+        case 'skills':
+        case 'projects':
+        case 'achievements':
+        case 'contact':
+            const target = document.getElementById(action);
+            if (target) {
+                const nav = document.getElementById('navbar');
+                const offset = (nav ? nav.offsetHeight : 70) + 20;
+                const pos = target.getBoundingClientRect().top + window.scrollY - offset;
+                window.scrollTo({ top: pos, behavior: 'smooth' });
+            }
+            break;
+        case 'github':
+            window.open('https://github.com/RAUNAK-733', '_blank');
+            break;
+        case 'copy-email':
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText('singhraunak733@gmail.com');
+                showToast('Email copied to clipboard!');
+            }
+            break;
+    }
+};
+
+// ===== LIGHTBOX FUNCTIONS =====
+window.openLightbox = function(imgSrc, title, desc) {
+    const modal = document.getElementById('lightboxModal');
+    if (!modal) return;
+
+    document.getElementById('lightboxImg').src = imgSrc;
+    document.getElementById('lightboxTitle').textContent = title;
+    document.getElementById('lightboxDesc').textContent = desc;
+
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+};
+
+window.closeLightbox = function() {
+    const modal = document.getElementById('lightboxModal');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+};
+
+// ===== PROJECT MODAL FUNCTIONS =====
 window.openProjectModal = function(key) {
     const data = PROJECT_SPECS[key];
     if (!data) return;
