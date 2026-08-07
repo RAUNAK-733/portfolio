@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Sitemap locations
+Sitemap: https://raunak-733.github.io/portfolio/sitemap.xml
+Sitemap: https://raunak-733.vercel.app/sitemap.xml
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1
